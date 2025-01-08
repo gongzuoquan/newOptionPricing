@@ -1,0 +1,33 @@
+#!/bin/sh
+timestep=300
+#echo $#
+#echo $1
+if [ $1x == x ];then
+    max_scale=6
+else
+    max_scale=$1
+fi
+
+# 自动保存已有log到backup文件夹
+project_path=$(basename `pwd`)
+suffix=${project_path:9}
+gtime=$(date "+%Y-%m-%d-%H-%M-%S")
+log=log$gtime-$suffix
+for file in $(ls)
+do
+    if [[ "$file" = log* ]];then
+        mv $file backup
+    fi
+done
+
+t=4096
+for i in $(seq 1 $max_scale);do
+    echo "计算规模：" ${t} "  ( 2^" $((12+(i-1)*2)) ")"
+    echo "计算时间:"
+    echo "@" ${t} >>$log
+    time ./execute $t $timestep >>$log
+    echo ""
+    t=$[$t*4] 
+done
+
+#echo $suffix

@@ -1,0 +1,42 @@
+# 2021.9.1
+# 参数配置文件
+
+# device parameters
+device=1
+#本测试中num_device必须为1
+num_device=1
+block_size=128
+seed=0
+
+# MC parameters
+num_sim=1048576
+#num_sim=65536
+num_timestep=261
+#num_timestep=3
+
+# option parameters
+# S0=40
+# K=35
+# R=0.03
+# V=0.2
+# T=0.333333333
+# is_call=1
+
+S0=100
+K=100
+R=0.05
+V=0.2
+T=1
+is_call=1
+
+# Merton Diffusion-Jump model
+is_MertonDJ=1
+jump_mu=0.0
+jump_sigma=0.4
+lambda=1.0
+
+# test parameters
+timer_on=0
+#golden=5.162534
+golden=18.7336
+

@@ -1,0 +1,15 @@
+CXX = pgc++
+NVCC = /usr/local/cuda/bin/nvcc
+
+execute: main.o PricingEngine.o
+	$(NVCC) -o execute main.o PricingEngine.o -lcurand -Xcompiler arch=compute_60,code=sm_60
+	#$(NVCC) -o execute main.o PricingEngine.o -Minfo -Mcuda
+main.o: main.cpp
+	$(NVCC) -c main.cpp -Xcompiler -gencode arch=compute_60,code=sm_60
+	#$(NVCC) -c -acc -Minfo -std=c++11 main.cpp
+PricingEngine.o: PricingEngine.cu
+	$(NVCC) -c PricingEngine.cu -Xcompiler arch=compute_60,code=sm_60
+
+clean:
+	rm -rf *.o execute 
+

@@ -1,0 +1,45 @@
+# 2021.9.1
+# 参数配置文件
+
+# device parameters
+device=0
+#本测试中num_device必须为1
+num_device=1
+block_size=1024
+seed=12345
+
+# MC parameters
+num_sim=1048576
+#num_sim=8388608
+#num_sim=100000
+#num_sim=65536
+num_timestep=128
+#num_timestep=10
+
+# option parameters
+S0=55
+K=50
+R=0.1
+V=0.3
+T=1.0
+is_call=0
+
+#S0=44
+#K=40
+#R=0.06
+#V=0.2
+#T=2.0
+#is_call=0
+
+# S0=100
+# K=100
+# R=0.05
+# V=0.2
+# T=1
+# is_call=1
+
+# test parameters
+timer_on=0
+golden=2.604
+#golden=5.162534
+
